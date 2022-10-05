@@ -5,7 +5,8 @@ import './App.css';
 // import './adapter.ts'
 // import './builder.ts';
 // import './composite.ts';
-import './mediator.ts';
+// import './mediator.ts';
+import './observer.ts';
 
 function App() {
   return (

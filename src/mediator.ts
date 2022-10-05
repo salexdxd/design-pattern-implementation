@@ -18,7 +18,7 @@ class Mediator{
 
     notify(message:string, originator:ImplComponent):void{
         this.components.forEach((component)=>{
-            if(component!=originator){
+            if(component!==originator){
                 component.receive(message);
             }
         })
@@ -38,11 +38,11 @@ class Component implements ImplComponent{
 
 
     notify(message: string): void {
-        console.log(this.name+" out "+message);
+        console.log(this.name+" >>out>> "+message);
         this.mediator.notify(message, this);
     }
     receive(message: string): void {
-        console.log(this.name+" in "+message);
+        console.log(this.name+" <<in<< "+message);
     }
     
 }
@@ -51,21 +51,17 @@ const myMediator = new Mediator();
 const myComponent1 = new Component(myMediator, "Component1");
 const myComponent2 = new Component(myMediator, "Component2");
 const myComponent3 = new Component(myMediator, "Component3");
-// console.log(myMediator);
-// console.log(myComponent1);
-// console.log(myComponent2);
-// console.log(myComponent3);
-console.log("--------------------------------------------------------------------")
 
 myMediator.add(myComponent1);
 myMediator.add(myComponent2);
 myMediator.add(myComponent3);
+console.log("--------------------------------------------------------------------");
 console.log(myMediator);
-
+console.log("--------------------------------------------------------------------");
 myComponent1.notify("comp1 notification");
-console.log("--------------------------------------------------------------------")
+console.log("--------------------------------------------------------------------");
 myComponent2.notify("comp2 notification");
-console.log("--------------------------------------------------------------------")
+console.log("--------------------------------------------------------------------");
 myComponent3.notify("comp3 notification");
 
 
