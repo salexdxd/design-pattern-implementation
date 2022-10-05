@@ -5,7 +5,7 @@ interface ImplComponent{
     referenceToParent?:Company;
 
     //a method each leaf and composite container should implement
-    seniority(seniority:string):void;
+    indent(indent:string):void;
 
     //called before a leaf is attached to a composite
     detach():void;
@@ -24,8 +24,8 @@ class Developer implements ImplComponent{
 
 
 
-    seniority(seniority: string): void {
-        console.log(`${seniority} x ${this.name}`);
+    indent(indent: string): void {
+        console.log(`${indent} x ${this.name}`);
     }
     detach(): void {
         // detaching this leaf from its parent composite
@@ -51,12 +51,12 @@ class Company implements ImplComponent{
     }
 
 
-    seniority(seniority: string): void {
+    indent(indent: string): void {
         // detach leaf / composite from any current parent reference and
         // then set the parent reference to this composite
-        console.log(`${seniority} x ${this.name}`);
+        console.log(`${indent} x ${this.name}`);
         this.components.forEach((component) => {
-            component.seniority(seniority+"..");
+            component.indent(indent+"..");
         })
     }
 
@@ -107,7 +107,7 @@ const myCompanyB = new Company("Company 3");
 const myDev4 = new Developer("Dev4");
 myCompanyB.attach(myDev4);
 myCompany.attach(myCompanyB);
-myCompany.seniority('');
+myCompany.indent('');
 
 
 console.log();

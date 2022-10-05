@@ -4,7 +4,8 @@ import './App.css';
 // import './factory.ts'
 // import './adapter.ts'
 // import './builder.ts';
-import './composite.ts';
+// import './composite.ts';
+import './mediator.ts';
 
 function App() {
   return (
