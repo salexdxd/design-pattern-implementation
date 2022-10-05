@@ -1,0 +1,24 @@
+what the fuck
+
+knjiga: design patterns
+
+
+#mediator
+mediator is used to allow communication between components. If component 1 sends notification, mediator will notify other components  and they will receive the message (it will trigger receive method in other components).
+
+
+#composite
+composite is made out of Component (Implementation interface for composite), leaves and composite. In example of folders and files, folder=composite, where folder can contain multiple files and folders. Composite can have leaves and composites inside, but leaves cant have anything inside them. Leaves can only be part of composite.
+
+#factory
+factory pattern is made out of product, concrete product, creator and concrete creator. Product is an interface defining what concrete product should look like. Creator is abstract class defining what concrete creator should have. Concrete creator (OrganizationFactory) can have a list of products (Developers), with methods of adding and finding products within the list.
+
+#builder
+builder pattern is based on having a product and builder that builds the product. Builder provides methods (setters) for building product. On example, we have Implementation of product (interface), product and product builder. Implementation defines what product should look like, product has name as required property and optional properties that builder builds. ProductBuilder is a class that has methods that are setting properties for object of a product.
+
+#adapter
+adapter pattern allows usage of classA methods within classB object through adapter class. In example given, ClassBAdapter (BackendToFrontend) implements classA interface (ImplFrontend) and implements classA method where classA method has classB definition (useReactTs():void {this.backendDev.useSpringBoot();}).
+
+
+#observer
+observer pattern is based on Subject Interface (ImplObservable), Concrete Subject (Subject) that implements Subject Interface, Observer Interface (ImplObserver) and Concrete Observer (Observer) that implements Observer Interface. Subject calls subscribe() method on observer (given example: mySubject.subscribe(myObserver2)), where subscribe method adds observer to list of observers inside of Subject. To send notification, we call notify() method from subject (example given: mySubject.notify("my notification")). Notify() method from subject iterates over list of observers (observers.forEach()) and calls notify method from each of observer objects (this.observers.forEach((observer)=>{observer.notify(...args)})) and sends arguments that we passed when we called method (...args = "first notification"). Notify() method from observer logs observer with his id and passed arguments (JSON.stringify(args) where args == "first notification").

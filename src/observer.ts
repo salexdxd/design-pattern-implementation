@@ -1,5 +1,3 @@
-import { updateMetaProperty } from "typescript";
-
 //subject interface (declares -> subscribe(), unsubscribe(), notify())
 interface ImplObservable {
     // subscribe method
@@ -14,17 +12,19 @@ interface ImplObservable {
 class Subject implements ImplObservable{
 
     observers:Set<ImplObserver>;
+    
     constructor(){
         this.observers = new Set();
     }
 
-
     subscribe(observer: ImplObserver): void {
         this.observers.add(observer);
     }
+
     unsubscribe(observer: ImplObserver): void {
         this.observers.delete(observer);
     }
+
     notify(...args: unknown[]): void {
         this.observers.forEach((observer)=>{
             observer.notify(...args);
@@ -40,7 +40,7 @@ interface ImplObserver{
     notify(...args:unknown[]):void;
 }
 
-let COUNTER =0;
+let COUNTER = 0;
 //concrete observer (implements -> notify())
 class Observer implements ImplObserver {
     id:number;
@@ -57,27 +57,24 @@ class Observer implements ImplObserver {
 const mySubject = new Subject();
 const myObserver1 = new Observer(mySubject);
 const myObserver2 = new Observer(mySubject);
+const myObserver3 = new Observer(mySubject);
+const myObserver4 = new Observer(mySubject);
+const myObserver5 = new Observer(mySubject);
+const myObserver6 = new Observer(mySubject);
 
-mySubject.observers.add(myObserver1);
-mySubject.observers.add(myObserver2);
+mySubject.subscribe(myObserver1);
+mySubject.subscribe(myObserver2);
+mySubject.subscribe(myObserver3);
+mySubject.subscribe(myObserver4);
+mySubject.subscribe(myObserver5);
+mySubject.subscribe(myObserver6);
 
-mySubject.notify('first notification', [1,2,3])
+mySubject.notify('first notification', [1,2,3]);
 // myObserver1.notify('asd');
+console.log("------------------------------------------------")
 mySubject.unsubscribe(myObserver2);
 
-mySubject.notify("after unsubscribing obs2", [1,4,5])
-
-
-
-// console.log(mySubject);
-// console.log(myObserver1);
-// console.log(myObserver2);
-
-
-
-
-
-
+mySubject.notify("after unsubscribing obs2", [1,4,5]);
 
 
 
