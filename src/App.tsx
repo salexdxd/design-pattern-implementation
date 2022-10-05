@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import './factory.ts'
-// import './adapter.ts'
-// import './builder.ts';
-// import './composite.ts';
-// import './mediator.ts';
+// import './factory/factory.ts'
+// import './adapter/adapter2.ts';
+// import './builder/builder2.ts';
+// import './composite/composite.ts';
+// import './mediator/mediator.ts';
 // import './observer/observer.ts';
 
 function App() {
